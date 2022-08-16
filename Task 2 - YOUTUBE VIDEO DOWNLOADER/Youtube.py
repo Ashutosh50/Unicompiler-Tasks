@@ -27,14 +27,14 @@ def setURL():
     print(yt.title)
 
     # Get the Quality of the Videos and store in the 'videos' variable
-   # global videos
-    #videos = yt.streams.filter(mime_type='video/mp4').all()
+    global videos
+    videos = yt.streams.filter(mime_type='video/mp4').all()
 
     #Get Quality and display as list in the Listbox
-    #count = 1
-    #for v in videos:
-        #listbox.insert(END, str(count)+". "+str(v)+"\n\n")
-        #count += 1
+    count = 1
+    for v in videos:
+        listbox.insert(END, str(count)+". "+str(v)+"\n\n")
+        count += 1
 
 
 def clickBrowse():
@@ -61,7 +61,7 @@ root.resizable(False, False)
 #Set Labels
 headLabel       = Label(root,   text="YOUTUBE VIDEO DOWNLOADER",  font=("Century Gothic",25)).grid(row=0, column=1, padx=10, pady=10)
 urlLabel        = Label(root,   text="URL",                 font=("Century Gothic",15)).grid(row=1, column=0, padx=10, pady=10)
-#qualityLabel    = Label(root,   text="SELECT QUALITY",      font=("Century Gothic",15)).grid(row=2, column=0, padx=10, pady=10)
+qualityLabel    = Label(root,   text="SELECT QUALITY",      font=("Century Gothic",15)).grid(row=2, column=0, padx=10, pady=10)
 locLabel        = Label(root,   text="LOCATION",            font=("Century Gothic",15)).grid(row=3, column=0, padx=10, pady=10)
 
 #Get Input
@@ -73,8 +73,8 @@ urlEntry    = Entry(root,   font=("Century Gothic",12), textvariable = getURL, w
 locEntry    = Entry(root,   font=("Century Gothic",12), textvariable = getLoc, width = 50, bd=3, relief=SOLID, borderwidth=1).grid(row=3,column=1, padx=10, pady=10)
 
 #List box for video Quality
-#listbox     = Listbox(root, font=("Century Gothic",11), width = 56, height = 12, bd=3, relief=SOLID, borderwidth=1)
-#listbox.grid(row=2,column=1, padx=10, pady=10)
+listbox     = Listbox(root, font=("Century Gothic",11), width = 56, height = 12, bd=3, relief=SOLID, borderwidth=1)
+listbox.grid(row=2,column=1, padx=10, pady=10)
 
 #Set Buttons
 urlButton       = Button(root, text = "SET URL",    font=("Century Gothic",10), width=15, relief=SOLID, borderwidth=1, command=setURL).grid(row=1, column=2, padx=10, pady=10)
